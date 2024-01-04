@@ -123,7 +123,6 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         fade = FindAnyObjectByType<FadeInOut>();
-
         impulseSource = GetComponent<CinemachineImpulseSource>();
 
         rb = GetComponent<Rigidbody2D>();
@@ -160,7 +159,6 @@ public class PlayerController : MonoBehaviour
             HandleWallClimb();
         }
     }
-
     void HandleWallSlide()
     {
         // Duvar kaymasý

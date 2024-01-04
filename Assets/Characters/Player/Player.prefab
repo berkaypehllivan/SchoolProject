@@ -345,8 +345,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8bc21b866bcf741baa74bc4491ef1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadePanel: {fileID: 0}
-  fadeSpeed: 1
   walkSpeed: 5
   runSpeed: 8
   airWalkSpeed: 3
@@ -580,6 +578,7 @@ MonoBehaviour:
   ceilingDistance: 0.05
   _isGrounded: 1
   _isOnWall: 1
+  playerIsOnWall: 1
   _isOnCeiling: 1
 --- !u!114 &7251537955624885803
 MonoBehaviour:
@@ -608,6 +607,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  healthChanged:
+    m_PersistentCalls:
+      m_Calls: []
   _maxHealth: 100
   _health: 100
   _isAlive: 1
@@ -676,7 +678,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1580e39deae2e234f9fbd737087d7456, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 6080c6c9a8ea5834ba90407542cf4508, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
