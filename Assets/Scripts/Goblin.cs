@@ -12,7 +12,6 @@ public class Goblin : MonoBehaviour
     private CinemachineImpulseSource impulseSource;
     public float walkSpeed = 3f;
     public float walkStopRate = 0.05f;
-    private bool isFacingRight = true;
     public DetectionZone attackZone;
     public DetectionZone cliffDetectionZone;
 
@@ -30,7 +29,7 @@ public class Goblin : MonoBehaviour
         {
             if (_walkDirection != value)
             {
-                transform.localRotation = Quaternion.Euler(transform.localRotation.x, (transform.localRotation.y == 0f) ? 180f : 0f, transform.localRotation.z);
+                gameObject.transform.localScale = new Vector2(gameObject.transform.localScale.x * -1, gameObject.transform.localScale.y);
 
                 if (value == WalkableDirection.Right)
                 {
@@ -102,7 +101,7 @@ public class Goblin : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (touchingDirections.IsGrounded && IsFacingWall())
+        if (touchingDirections.IsGrounded && touchingDirections.IsOnWall)
         {
             FlipDirection();
         }
@@ -116,18 +115,16 @@ public class Goblin : MonoBehaviour
         }
     }
 
-    private bool IsFacingWall()
-    {
-        return (isFacingRight && touchingDirections.IsOnWall && touchingDirections.wallCheckDirection == Vector2.right) ||
-               (!isFacingRight && touchingDirections.IsOnWall && touchingDirections.wallCheckDirection == Vector2.left);
-    }
-
     private void FlipDirection()
     {
-        isFacingRight = !isFacingRight;
-
-        WalkDirection = (isFacingRight) ? WalkableDirection.Right : WalkableDirection.Left;
-        transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        if (WalkDirection == WalkableDirection.Right)
+        {
+            WalkDirection = WalkableDirection.Left;
+        }
+        else if (WalkDirection == WalkableDirection.Left)
+        {
+            WalkDirection = WalkableDirection.Right;
+        }
     }
 
     public void OnHit(int damage, Vector2 knockback)

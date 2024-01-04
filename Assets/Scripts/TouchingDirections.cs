@@ -47,12 +47,27 @@ public class TouchingDirections : MonoBehaviour
             _isOnWall = value;
             animator.SetBool(AnimationStrings.isOnWall, value);
         }
-    }
 
+    }
+    [SerializeField]
+    private bool playerIsOnWall = true;
+    public bool PlayerIsOnWall
+    {
+        get
+        {
+            return playerIsOnWall;
+        }
+        private set
+        {
+            playerIsOnWall = value;
+            animator.SetBool(AnimationStrings.PlayerIsOnWall, value);
+        }
+    }
     [SerializeField]
     private bool _isOnCeiling = true;
 
-    public Vector2 wallCheckDirection => gameObject.transform.localRotation.y >= 0 ? Vector2.right : Vector2.left;
+    public Vector2 wallCheckDirection => gameObject.transform.localScale.x > 0 ? Vector2.right : Vector2.left;
+    public Vector2 playerWallCheck => gameObject.transform.localRotation.y >= 0 ? Vector2.right : Vector2.left;
 
     public bool IsOnCeiling
     {
@@ -78,6 +93,7 @@ public class TouchingDirections : MonoBehaviour
     {
         IsGrounded = touchingCol.Cast(Vector2.down, castFilter, groundHits, groundDistance) > 0;
         IsOnWall = touchingCol.Cast(wallCheckDirection, castFilter, wallHits, wallDistance) > 0;
+        PlayerIsOnWall = touchingCol.Cast(playerWallCheck, castFilter, wallHits, wallDistance) > 0;
         IsOnCeiling = touchingCol.Cast(Vector2.up, castFilter, ceilingHits, ceilingDistance) > 0;
     }
 }

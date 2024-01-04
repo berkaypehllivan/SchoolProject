@@ -1,10 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class DoorScript : MonoBehaviour
+public class Level2Door : MonoBehaviour
 {
     public CanvasGroup InfoPanelCanvasGroup;
     public TextMeshProUGUI InfoText;
@@ -56,14 +55,14 @@ public class DoorScript : MonoBehaviour
         player.SetActive(false);
         fade.FadeIn();
         yield return new WaitForSeconds(timeBeforeNextScene);
-        SceneManager.LoadScene("Level-2");
+        SceneManager.LoadScene("GameComplete");
     }
 
     private IEnumerator ShowInfoPanel()
     {
         InfoText.text = "";
         InfoPanelCanvasGroup.gameObject.SetActive(true);
-        InfoPanelCanvasGroup.alpha = 1f; // InfoPanel'i görünür yap
+        InfoPanelCanvasGroup.alpha = 1f;
         yield return TypeText("Bütün Düþmanlarý Öldürmen Gerekiyor! Kalan Düþman Sayýsý: " + scoreScript.remainingEnemies, 0.05f);
         yield return new WaitForSeconds(1f);
         yield return FadeOutCanvasGroup(InfoPanelCanvasGroup, 1.5f);

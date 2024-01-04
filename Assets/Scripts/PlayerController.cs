@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
         {
             if (CanMove)
             {
-                if (IsMoving && !touchingDirections.IsOnWall)
+                if (IsMoving && !touchingDirections.PlayerIsOnWall)
                 {
                     if (touchingDirections.IsGrounded)
                     {
@@ -154,7 +154,7 @@ public class PlayerController : MonoBehaviour
         {
             coyoteTimeCounter -= Time.deltaTime;
         }
-        if (touchingDirections.IsOnWall && !touchingDirections.IsGrounded)
+        if (touchingDirections.PlayerIsOnWall && !touchingDirections.IsGrounded)
         {
             HandleWallSlide();
             HandleWallClimb();
@@ -174,7 +174,7 @@ public class PlayerController : MonoBehaviour
     {
         vertical = Input.GetAxisRaw("Vertical");
 
-        if (touchingDirections.IsOnWall && Mathf.Abs(vertical) > 0f)
+        if (touchingDirections.PlayerIsOnWall && Mathf.Abs(vertical) > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, vertical * wallClimbSpeed);
         }
