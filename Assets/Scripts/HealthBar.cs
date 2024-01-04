@@ -35,14 +35,19 @@ public class HealthBar : MonoBehaviour
         playerDamageable.healthChanged.RemoveListener(OnPlayerHealthChanged);
     }
 
-    private float CalculateSliderPercentage(float currentHealth,float maxHealth)
+    private float CalculateSliderPercentage(float currentHealth, float maxHealth)
     {
-        return currentHealth / maxHealth;
+        // Saðlýk deðerini 0 ile maxHealth arasýnda sýnýrla
+        float clampedHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
+        return clampedHealth / maxHealth;
     }
 
-    private void OnPlayerHealthChanged(int newHealth,int maxHeath)
+    private void OnPlayerHealthChanged(int newHealth, int maxHeath)
     {
-        healthSlider.value = CalculateSliderPercentage(newHealth, maxHeath);
-        healthBarText.text = "SAÐLIK: " + newHealth;
+        // Saðlýk deðerini 0 ile maxHeath arasýnda sýnýrla
+        int clampedHealth = Mathf.Clamp(newHealth, 0, maxHeath);
+
+        healthSlider.value = CalculateSliderPercentage(clampedHealth, maxHeath);
+        healthBarText.text = "SAÐLIK : " + clampedHealth;
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Cinemachine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirections), typeof(Damageable))]
 
@@ -281,9 +282,17 @@ public class PlayerController : MonoBehaviour
 
         if (!IsAlive)
         {
+            // Öldüðümüzde kaydedilen level bilgisini güncelle
+            UpdateSavedLevel();
             StartCoroutine(FadeOutAndLoadScene());
             CameraManager.instance.StopFollowingPlayer();
         }
+    }
+
+    private void UpdateSavedLevel()
+    {
+        int currentLevel = SceneManager.GetActiveScene().buildIndex;
+        PlayerPrefs.SetInt("SavedLevel", currentLevel);
     }
 
     private IEnumerator FadeOutAndLoadScene()

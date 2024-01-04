@@ -60,6 +60,17 @@ public class RestartScene : MonoBehaviour
             fadeImage.color = c;
             yield return null;
         }
-        SceneManager.LoadScene("Level-1");
+
+        // GameOver sahnesinden tekrar deneye bastýðýmýzda bu metot çalýþacak
+        LoadSavedLevel();
+    }
+
+    private void LoadSavedLevel()
+    {
+        // PlayerPrefs'ten kaydedilmiþ level bilgisini al
+        int savedLevel = PlayerPrefs.GetInt("SavedLevel", 1); // Varsayýlan olarak level-1
+
+        // Kaydedilen level'i yükle
+        SceneManager.LoadScene(savedLevel);
     }
 }
