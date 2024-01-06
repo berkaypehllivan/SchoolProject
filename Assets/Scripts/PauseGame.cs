@@ -9,7 +9,6 @@ public class PauseGame : MonoBehaviour
 
     public void Pause()
     {
-            Debug.Log("ESC Tuþuna Basýldý");
             pauseMenu.SetActive(true);
             Time.timeScale = 0;
     }

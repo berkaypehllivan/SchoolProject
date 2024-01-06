@@ -115,7 +115,7 @@ public class Goblin : MonoBehaviour
         }
     }
 
-    private void FlipDirection()
+    public void FlipDirection()
     {
         if (WalkDirection == WalkableDirection.Right)
         {

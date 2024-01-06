@@ -14,7 +14,6 @@ public class Skeleton : MonoBehaviour
     public float walkStopRate = 0.05f;
     public DetectionZone attackZone;
     public DetectionZone cliffDetectionZone;
-
     Rigidbody2D rb;
 
     public enum WalkableDirection { Right, Left }
@@ -108,7 +107,7 @@ public class Skeleton : MonoBehaviour
         }
     }
 
-    private void FlipDirection()
+    public void FlipDirection()
     {
         if (WalkDirection == WalkableDirection.Right)
         {
@@ -130,7 +129,6 @@ public class Skeleton : MonoBehaviour
         }
     }
 
-    // Skoru güncelleme fonksiyonu
     public void UpdateScoreOnDeath()
     {
         ScoreScript.scoreValue -= 1;
