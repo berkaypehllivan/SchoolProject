@@ -299,6 +299,8 @@ public class PlayerController : MonoBehaviour
         fade.FadeIn();
         yield return new WaitForSeconds(1f);
         fade.FadeOut();
-        UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        SceneManager.LoadScene("GameOver");
     }
 }

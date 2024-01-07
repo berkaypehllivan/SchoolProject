@@ -41,7 +41,7 @@ public class Level1Door : MonoBehaviour
             else
             {
                 StartCoroutine(ShowInfoPanel());
-                Debug.Log("Bütün Düþmanlarý Öldürmen Gerekiyor! Kalan Düþman Sayýsý: " + scoreScript.remainingEnemies);
+                Debug.Log("Kapý kilitli. Sanýrým bütün düþmanlarý öldürmem gerekiyor. Bölümde Kalan Düþman Sayýsý : " + scoreScript.remainingEnemies);
             }
         }
     }
@@ -64,7 +64,7 @@ public class Level1Door : MonoBehaviour
         InfoText.text = "";
         InfoPanelCanvasGroup.gameObject.SetActive(true);
         InfoPanelCanvasGroup.alpha = 1f;
-        yield return TypeText("Bütün Düþmanlarý Öldürmen Gerekiyor! Kalan Düþman Sayýsý: " + scoreScript.remainingEnemies, 0.05f);
+        yield return TypeText("Kapý kilitli. Sanýrým bütün düþmanlarý öldürmem gerekiyor. Bölümde Kalan Düþman Sayýsý : " + scoreScript.remainingEnemies, 0.05f);
         yield return new WaitForSeconds(1f);
         yield return FadeOutCanvasGroup(InfoPanelCanvasGroup, 1.5f);
         InfoPanelCanvasGroup.gameObject.SetActive(false);

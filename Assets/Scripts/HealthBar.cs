@@ -19,10 +19,8 @@ public class HealthBar : MonoBehaviour
 
     private void Start()
     {
-        // Baþlangýçta healthSlider.value'yi doðru bir þekilde ayarla
         healthSlider.value = CalculateSliderPercentage(playerDamageable.Health, playerDamageable.MaxHealth);
-        // Baþlangýçta healthBarText'i doðru bir þekilde ayarla
-        healthBarText.text = "SAÐLIK: " + playerDamageable.Health;
+        healthBarText.text = "SAÐLIK : " + playerDamageable.Health;
     }
 
     private void OnEnable()
